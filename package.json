@@ -1,0 +1,11 @@
+{
+  "name": "iOS-App-RE-Guide",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/sh1ma/iOS-App-RE-Guide.git",
+  "author": "sh1ma <in9lude@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "honkit": "^3.4.0"
+  }
+}
