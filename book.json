@@ -1,0 +1,12 @@
+{
+  "gitbook": ">=3.0.0",
+  "title": "iOS App REガイド",
+  "description": "iOSアプリケーションのリバースエンジニアリングを行うためのガイドです",
+  "author": "sh1ma",
+  "language": "ja",
+  "root": "./src/",
+  "structure": {
+    "readme": "index.md",
+    "summary": "README.md"
+  }
+}
