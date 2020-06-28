@@ -8,5 +8,16 @@
   "structure": {
     "readme": "index.md",
     "summary": "README.md"
+  },
+  "plugins": ["head-append", "ga"],
+  "pluginsConfig": {
+    "head-append": {
+      "code": [
+        "<meta name=\"google-site-verification\" content=\"4gCcE5dgbNmuMoJT1TgfK8f0hKDoSty0SWjffutHpiU\" />"
+      ]
+    },
+    "ga": {
+      "token": "UA-163987001-1"
+    }
   }
 }
