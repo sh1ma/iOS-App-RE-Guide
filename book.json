@@ -9,7 +9,7 @@
     "readme": "index.md",
     "summary": "README.md"
   },
-  "plugins": ["ga", "head-append"],
+  "plugins": ["ga", "head-append", "sitemap"],
   "pluginsConfig": {
     "ga": {
       "token": "UA-163987001-1"
@@ -18,6 +18,9 @@
       "code": [
         "<meta name=\"google-site-verification\" content=\"4gCcE5dgbNmuMoJT1TgfK8f0hKDoSty0SWjffutHpiU\" />"
       ]
+    },
+    "sitemap": {
+      "hostname": "https://re-ios-app.netlify.app/"
     }
   }
 }
