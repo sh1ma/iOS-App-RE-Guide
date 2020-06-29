@@ -21,7 +21,7 @@ Machとは，マイクロカーネルである．
 
 [Mach - Wikipedia](https://ja.wikipedia.org/wiki/Mach)
 
-Machについて理解する必要がある場合には，
+Machについて理解する必要がある場合には，[Machについて](side-content/mach.md)を参照してください．
 
 ### syscall
 
