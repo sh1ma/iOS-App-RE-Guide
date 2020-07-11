@@ -21,10 +21,14 @@ MACFは__強制アクセス制御(MAC)__，つまりセキュリティポリシ�
 そして，サンドボックスは_sandbox.kext_という名前のポリシーモジュールです．
 ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggivspc3dij326y05qabd.jpg)
 
-_sandbox.kext_をはじめとしたポリシーモジュールは，(多くの場合，)カーネル上にロードされたときに，自身で関数_mac_policy_register_を呼び出し，自身のポリシーをMACFに登録します．
+### mac_policy_register
 
-## サンドボックス
+[mac_register_policy - darwin-xnu/mac_base.c at master · apple/darwin-xnu](https://github.com/apple/darwin-xnu/blob/master/security/mac_base.c#L641) 
 
-ここまででサンドボックスはポリシーモジュールの一つで，実体がkextであることが理解できたかと思います．
+`mac_policy_register`はカーネルからエクスポートされた関数です．
 
-TODO
+_sandbox.kext_をはじめとしたポリシーモジュールは，(多くの場合，)カーネル上にロードされたときに，自身で関`mac_policy_register`を呼び出し，自身のポリシーをMACFに登録します．
+
+それでは，具体的に登録処理の流れを説明します．
+
+まず，ポリシーモジュールがロードされるとエントリーポイント`kmod_start`が発火し，`kmod_start`内で`mac_policy_register`が呼び出されます．`mac_policy_register`は[`mac_policy_conf`](https://github.com/apple/darwin-xnu/blob/master/security/mac_policy.h#L6708)という構造体へのポインタを引数に取ります．ここで重要なのは，`mac_policy_conf`内の[`mac_policy_ops`](https://github.com/apple/darwin-xnu/blob/master/security/mac_policy.h#L6292)という構造体のデータです．この構造体は`mpo_`から始まる型のメンバーを持っています．これはチェック関数のプレースホルダで，ポリシーモジュールがこれをフックすることでチェック機構が実装されます．そのうち[`mpo_policy_init`](https://github.com/apple/darwin-xnu/blob/master/security/mac_base.c#L778)，[`mpo_policy_initbsd`](https://github.com/apple/darwin-xnu/blob/master/security/mac_base.c#L782)の実装は`mac_policy_register`時に呼び出され，ポリシーを初期化します．
