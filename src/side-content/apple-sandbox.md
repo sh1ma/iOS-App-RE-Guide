@@ -21,13 +21,13 @@ MACFは__強制アクセス制御(MAC)__，つまりセキュリティポリシ�
 そして，サンドボックスは_sandbox.kext_という名前のポリシーモジュールです．
 ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggivspc3dij326y05qabd.jpg)
 
+_sandbox.kext_をはじめとしたポリシーモジュールは，(多くの場合，)カーネル上にロードされたときに，自身で関`mac_policy_register`を呼び出し，自身のポリシーをMACFに登録します．
+
 ### mac_policy_register
 
 [mac_policy_register - darwin-xnu/mac_base.c at master · apple/darwin-xnu](https://github.com/apple/darwin-xnu/blob/master/security/mac_base.c#L641) 
 
 `mac_policy_register`はカーネルからエクスポートされた関数です．
-
-_sandbox.kext_をはじめとしたポリシーモジュールは，(多くの場合，)カーネル上にロードされたときに，自身で関`mac_policy_register`を呼び出し，自身のポリシーをMACFに登録します．
 
 それでは，具体的に登録処理の流れを説明します．
 
